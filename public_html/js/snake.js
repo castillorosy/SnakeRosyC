@@ -49,7 +49,7 @@ function gameDraw() {
 
 function snakeInitialized() {
     snake = [];
-    snakeLength = 5;
+    snakeLength = 1;
     snakeSize = 20;
     snakeDirection = "down"; 
 
@@ -60,6 +60,11 @@ function snakeInitialized() {
         });
     }
 }
+/*
+ * thi sup here ^ adds new parts to the snake
+ * @returns {undefined}
+ */
+
 function snakeDraw() {
     for (var index = 0; index < snake.length; index++) {
         context.fillStyle = "white";
@@ -69,6 +74,9 @@ function snakeDraw() {
 function snakeUpdate() {
     var snakeHeadX = snake[0].x;
     var snakeHeadY = snake[0].y;
+    
+    checkFoodCollisions(snakeHeadX, snakeHeadY);
+    checkWallCollisions(snakeHeadX, snakeHeadY);
 
     if(snakeDirection == "down") {
       snakeHeadY++;  
@@ -98,7 +106,7 @@ function foodInitialized() {
 
 function foodDraw() {
     context.fillStyle = "white";
-    context.fillRect(food.x * snakeSize, food.y *  snakeSize, snakeSize);
+    context.fillRect(food.x * snakeSize, food.y *  snakeSize, snakeSize, snakeSize);
 }
 
 function setFoodPosition() {
@@ -115,10 +123,41 @@ function setFoodPosition() {
 function keyboardHandler(event) {
     console.log(event);
     
-    if(event.keyCode === "39") {
+    if(event.keyCode == "39" && snakeDirection != "left") {
         snakeDirection = "right";
     }
-    else if(event.keyCode ==="40") {
+    else if(event.keyCode == "40" && snakeDirection != "up") {
         snakeDirection = "down";
     }
+    if(event.keyCode == "37" && snakeDirection != "right") {
+        snakeDirection = "left";
+    }
+    else if(event.keyCode == "38" && snakeDirection != "down") {
+        snakeDirection = "up";
+}   
+/*
+ * collision Handling
+ * "snakeHeadX == food.x" is checking wiether or not the snakeHeadX
+ * is in the equal to position of the food.x position
+ */
+
+function checkFoodCollisions(snakeHeadX, snakeHeadY) {
+   if(snakeHeadX == food.x && snakeHeadY == food.y) {
+       snake.push({
+           x:0,
+           y:0
+       });
+       snakeLength++;
+   } 
 }
+
+function checkWallCollisions(snakeHeadX, snakeHeadY) {
+    if(snakeHeadX * snakeSize >= screenWidth || snakeHeadX * snakeSize < 0){
+        console.log("Wall Collision");
+    }
+}
+
+
+/*
+ * if statments mean
+ */
