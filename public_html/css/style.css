@@ -17,3 +17,17 @@ h1, h3 {
     color: darkmagenta;
     text-align: justify;
 }
+
+.title {
+    front-size: 40px;
+    margin-bottom: 5px;
+}
+
+#restartButton {
+    border:1px solid darkmagenta;
+    border-radius: 5px;
+}
+
+#restartButton:hover {
+    background-color:blanchedalmond;
+}
