@@ -7,20 +7,20 @@ body {
     display: block;
 }
 
-#gameOver {
+#gameOver, #playHUD {
     position: absolute;
     visibility: hidden;
 }
 
-h1, h3 {
+h1, h2, h3 {
     font-family: 'Lato', sans-serif;
     color: darkmagenta;
     text-align: justify;
 }
 
 .title {
-    front-size: 40px;
-    margin-bottom: 5px;
+    font-size: 40px;
+    margin-bottom: 1px;
 }
 
 #restartButton {
@@ -30,4 +30,8 @@ h1, h3 {
 
 #restartButton:hover {
     background-color:blanchedalmond;
+}
+
+#scoreboard {
+    margin: 0px;
 }
