@@ -19,6 +19,8 @@ var resartButton;
 var playHUD;
 var scoreboard;
 
+var startState;
+
 gameInitialized();
 snakeInitialized();
 foodInitialized();
@@ -45,10 +47,10 @@ function gameInitialized() {
 
     restartButton = document.getElementById("restartButton");
     restartButton.addEventListener("click", gameRestart);
-    
+
     playHUD = document.getElementById("playHUD");
     scoreboard = document.getElementById("scoreboard");
-    
+
     setState("PLAY");
 }
 
@@ -223,7 +225,7 @@ function showMenu(state) {
     if (state == "GAME OVER") {
         displayMenu(gameOverMenu);
     }
-    else if(state == "PLAY") {
+    else if (state == "PLAY") {
         displayMenu(playHUD);
     }
 }
