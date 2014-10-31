@@ -15,11 +15,9 @@ var screenHeight;
 
 var gameState;
 var gameOverMenu;
-var resartButton;
+var restartButton;
 var playHUD;
 var scoreboard;
-
-var startState;
 
 gameInitialized();
 snakeInitialized();
@@ -186,8 +184,13 @@ function checkFoodCollisions(snakeHeadX, snakeHeadY) {
 }
 
 function checkWallCollisions(snakeHeadX, snakeHeadY) {
-    if (snakeHeadX * snakeSize >= screenWidth || snakeHeadY * snakeSize < 0) {
+    if (snakeHeadX * snakeSize >= screenWidth || snakeHeadX * snakeSize < 0) {
         setState("GAME OVER");
+    }
+    if (snakeHeadY * snakeSize >= screenHeight || snakeHeadY * snakeSize < 0) {
+        console.log("wall collisions");
+        setState("GAME OVER")
+        return;
     }
 }
 
